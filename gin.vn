@@ -1,0 +1,37 @@
+hostname = avatar-nct.nixcdn.com, graph.nhaccuatui.com, pool.elsanow.io, vsco.co, api.global.mp3.zing.vn, api.picsart.c*, api.meiease.c*, api.termius.com, api-kinemaster-assetstore.*, commerce-i18n-api.faceu.mobi, photos.adobe.io, ios.fuliapps.com, apple.fuliapps.com, ios.xiangjiaoapps.com, apple.xiangjiaoapps.com, *.xiangxiangapps.com, apimboom2.globaldelight.net, mobile-api.adguard.com, api.cloudflareclient.com
+
+#nhaccuatui
+^https:\/\/graph\.nhaccuatui\.com\/.*\/users\/info* url script-response-body gin/nhaccuatui.js
+
+#elsaresponse
+^https:\/\/pool\.elsanow\.io\/user\/api\/v1\/purchase$ url script-response-body gin/elsa.js
+
+#elsarewrite
+^https:\/\/pool\.elsanow\.io\/content\/api\/v1\/modules\/download$  url request-header (\r\n)x-session-token:.+(\r\n) request-header $1x-session-token: F3S0w0bysBQFdbjtxpFurrFv2ItBBcBkVQxUddQW+9vjt2JXM751ksqq5GAWpkl+kk9nhig9BGh9JhYHQaokmendY6zLZDscHiRkZD2HrdJclKVCLordAARJhYIrf5C+5OSK6ax2TA45CKi8S09FEtYXN4noXO7gt42NT6WPIv6DKhdIwVxQuIAMLU5abmpMTDlyWeI4ulBWcOQbuZWWZg==
+
+#vsco
+^https?:\/\/vsco\.co\/api\/subscriptions\/2.1\/user-subscriptions\/ url script-response-body gin/vsco.js
+
+#picsart
+^https:\/\/api\.(picsart|meiease)\.c(n|om)\/users\/show\/me\.json url script-response-body gin/picsart.js
+
+#zingmp3
+^https:\/\/api\.global\.mp3\.zing\.vn\/1\.0\/getUserInfo\?data=* url script-response-body gin/zingmp3.js
+
+#termius
+https:\/\/api\.termius\.com\/api\/v3\/bulk\/account\/ url script-response-body gin/termius.js
+
+#ulike
+^https:\/\/commerce-i18n-api\.faceu\.mobi\/commerce\/v1\/subscription\/user_info$ url script-response-body gin/ulike.js
+
+#lightroom
+^https:\/\/photos\.adobe\.io\/v2\/accounts* url script-response-body gin/lightroom.js
+
+#boom
+^https:\/\/apimboom2\.globaldelight\.net\/itunesreceipt_v2\.php$ url 302 gin/boom.rsp
+
+#adguard
+^https:\/\/mobile-api\.adguard\.com\/api\/1\.0\/ios_validate_receipt$ url 302 gin/adguard.rsp
+
+#warp
+^https:\/\/api\.cloudflareclient\.com\/.*\/reg\/* url script-response-body gin/warp.js
